@@ -6,6 +6,7 @@ use App\Repository\AdRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: AdRepository::class)]
 class Ad
@@ -49,9 +50,9 @@ class Ad
     private ?City $city;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private ?string $addres;
+    private ?string $address;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->prices = new ArrayCollection();
     }
@@ -199,14 +200,14 @@ class Ad
         return $this;
     }
 
-    public function getAddres(): ?string
+    public function getAddress(): ?string
     {
-        return $this->addres;
+        return $this->address;
     }
 
-    public function setAddres(?string $addres): self
+    public function setAddress(?string $address): self
     {
-        $this->addres = $addres;
+        $this->address = $address;
 
         return $this;
     }
