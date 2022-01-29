@@ -1,0 +1,11 @@
+parameters:
+  currencies:
+    USD:
+      code: 'USD'
+      symbol: '$'
+      englishName: 'US Dollar'
+
+    BOB:
+      code: 'BOB'
+      symbol: '$b'
+      englishName: 'Bolivian boliviano'

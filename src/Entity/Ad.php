@@ -23,7 +23,7 @@ class Ad
     private ?string $description;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    private ?\DateTimeImmutable $postDate;
+    private ?\DateTimeImmutable $postAt;
 
     #[ORM\Column(type: 'boolean')]
     private ?bool $isActive;
@@ -86,14 +86,14 @@ class Ad
         return $this;
     }
 
-    public function getPostDate(): ?\DateTimeImmutable
+    public function getPostAt(): ?\DateTimeImmutable
     {
-        return $this->postDate;
+        return $this->postAt;
     }
 
-    public function setPostDate(\DateTimeImmutable $postDate): self
+    public function setPostAt(\DateTimeImmutable $postAt): self
     {
-        $this->postDate = $postDate;
+        $this->postAt = $postAt;
 
         return $this;
     }

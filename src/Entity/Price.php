@@ -24,10 +24,7 @@ class Price
 
     #[ORM\ManyToOne(targetEntity: Ad::class, inversedBy: 'prices')]
     #[ORM\Column(nullable: false)]
-    private Ad $Ad;
-
-    #[ORM\OneToOne(mappedBy: 'price', targetEntity: Ad::class, cascade: ['persist', 'remove'])]
-    private $ad;
+    private Ad $ad;
 
     public function getId(): ?int
     {
@@ -72,12 +69,12 @@ class Price
 
     public function getAd(): ?Ad
     {
-        return $this->Ad;
+        return $this->ad;
     }
 
-    public function setAd(?Ad $Ad): self
+    public function setAd(?Ad $ad): self
     {
-        $this->Ad = $Ad;
+        $this->ad = $ad;
 
         return $this;
     }
