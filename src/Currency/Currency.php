@@ -58,6 +58,4 @@ class Currency
         $this->englishName = $englishName;
         return $this;
     }
-
-
 }

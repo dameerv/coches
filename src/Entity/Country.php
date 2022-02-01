@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CountryRepository::class)]
+#[ORM\Index(fields: ["name", "nameNative", "slug", "phoneCode", "currency" ])]
 class Country
 {
     #[ORM\Id]
@@ -16,22 +17,22 @@ class Country
     private $id;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $name;
+    private ?string $name;
 
     #[ORM\Column(type: 'string', length: 100)]
-    private $nameNative;
+    private ?string $nameNative;
 
     #[ORM\Column(type: 'string', length: 100, nullable: true)]
-    private $slug;
+    private ?string $slug;
 
     #[ORM\Column(type: 'string', length: 10, nullable: true)]
-    private $phoneCode;
+    private ?string $phoneCode;
 
     #[ORM\Column(type: 'string', length: 3, nullable: true)]
-    private $currency;
+    private ?string $currency;
 
     #[ORM\OneToMany(mappedBy: 'country', targetEntity: Region::class, orphanRemoval: true)]
-    private $regions;
+    private ArrayCollection $regions;
 
     public function __construct()
     {

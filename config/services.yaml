@@ -6,6 +6,8 @@
 parameters:
   app.supported_locales: [ 'en', 'es', 'ru' ]
   app.currencies: '%currencies%'
+  app.car_makes_and_models_api: '%env(resolve:CAR_MAKES_AND_MODELS_KEY)%'
+
 imports:
   - { resource: services/ }
 
@@ -31,3 +33,7 @@ services:
     arguments:
       $currencies: '%app.currencies%'
 
+  App\Service\CarMakesAndModelsService:
+    arguments:
+      $apiKey: '%app.car_makes_and_models_api%'
+      $url: 'https://www.carmakesandmodels.co.uk/api/?apikey='

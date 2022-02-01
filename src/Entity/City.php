@@ -6,6 +6,7 @@ use App\Repository\CityRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CityRepository::class)]
+#[ORM\Index(fields: ["name", "slug", "coordLat", "coordLong" ])]
 class City
 {
     #[ORM\Id]
@@ -15,26 +16,26 @@ class City
 
     #[ORM\ManyToOne(targetEntity: Region::class, inversedBy: 'cities')]
     #[ORM\JoinColumn(nullable: false)]
-    private $region;
+    private ?Region $region;
 
     #[ORM\ManyToOne(targetEntity: Country::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private $country;
+    private ?Country $country;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    private ?string $name;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $slug;
+    private ?string $slug;
 
     #[ORM\Column(type: 'float', nullable: true)]
-    private $coordLat;
+    private ?float $coordLat;
 
     #[ORM\Column(type: 'float', nullable: true)]
-    private $coordLong;
+    private ?float $coordLong;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private $isActive;
+    private ?bool $isActive;
 
     public function getId(): ?int
     {
